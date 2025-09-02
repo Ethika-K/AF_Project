@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Localhost
   m_EditorClassIdentifier: 
   type: 0
-  host: 
+  host: 0
   port: 3000

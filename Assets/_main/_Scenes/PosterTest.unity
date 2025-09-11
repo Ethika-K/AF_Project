@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 234953345}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 419.98123, y: 19.70668, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -291,8 +291,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 3
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -316,8 +316,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455791375}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -419.98123, y: -19.70668, z: -5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -348,7 +348,7 @@ Transform:
   m_GameObject: {fileID: 537430083}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 419.98123, y: 19.70668, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -397,7 +397,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 3
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -424,7 +424,7 @@ Transform:
   m_GameObject: {fileID: 609548241}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -419.98123, y: -19.70668, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 818407333}
   - component: {fileID: 818407332}
   m_Layer: 0
-  m_Name: OSC Event Receiver
+  m_Name: OSC Test_Event Receiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -666,9 +666,9 @@ MonoBehaviour:
   _floatEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1058420456}
-        m_TargetAssemblyTypeName: OscPositionController, Assembly-CSharp
-        m_MethodName: SetPositionX
+      - m_Target: {fileID: 1285243662}
+        m_TargetAssemblyTypeName: OSCInputManager, Assembly-CSharp
+        m_MethodName: UpdateTestX
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -735,9 +735,9 @@ MonoBehaviour:
   _floatEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1058420456}
-        m_TargetAssemblyTypeName: OscPositionController, Assembly-CSharp
-        m_MethodName: SetPositionZ
+      - m_Target: {fileID: 1285243662}
+        m_TargetAssemblyTypeName: OSCInputManager, Assembly-CSharp
+        m_MethodName: UpdateTestZ
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -789,9 +789,9 @@ MonoBehaviour:
   _floatEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1058420456}
-        m_TargetAssemblyTypeName: OscPositionController, Assembly-CSharp
-        m_MethodName: SetPositionY
+      - m_Target: {fileID: 1285243662}
+        m_TargetAssemblyTypeName: OSCInputManager, Assembly-CSharp
+        m_MethodName: UpdateTestY
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 1058420452}
   - component: {fileID: 1058420456}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Sphere_OSC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -940,10 +940,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1058420451}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c271b7614de6a4e448dc8a5418d74ddd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ec5a0d453b29a044ba8d56ab433b253, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OscPositionController
-  targetObject: {fileID: 1058420451}
+  m_EditorClassIdentifier: Assembly-CSharp::SphereController
 --- !u!1 &1153539423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,7 +1115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -630, y: 1387}
+  m_AnchoredPosition: {x: -294.7, y: 1186.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1184202136
@@ -1168,8 +1167,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 360
+  m_fontSizeBase: 360
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1178,9 +1177,9 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 3
   m_wordSpacing: 0
-  m_lineSpacing: -42
+  m_lineSpacing: -48
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1342,7 +1341,7 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 3
+  duration: 1
   easeType: 1
   easeCurve:
     serializedVersion: 2
@@ -1369,7 +1368,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   loopType: 0
-  loops: 20
+  loops: -1
   id: 
   isRelative: 0
   isFrom: 0
@@ -1471,7 +1470,7 @@ Transform:
   m_GameObject: {fileID: 1879000022}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -419.98123, y: -19.70668, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

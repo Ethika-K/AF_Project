@@ -28,10 +28,8 @@ public class GameManager : MonoBehaviour
     }
 
     // ▼▼▼▼▼ 바로 이 함수가 핵심입니다! ▼▼▼▼▼
-    /// <summary>
     /// 문자열로 받은 씬 이름을 로드하도록 SceneLoader에게 명령합니다.
     /// 이 함수를 Inspector의 이벤트에 연결하여 사용합니다.
-    /// </summary>
     /// <param name="sceneName">로드할 씬의 이름</param>
     public void LoadSceneByName(string sceneName)
     {

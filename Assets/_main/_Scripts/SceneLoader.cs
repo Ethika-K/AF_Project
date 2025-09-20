@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 // 로딩 UI 없이 씬 로딩만 담당하는 간단한 버전의 스크립트입니다.
 public class SceneLoader : MonoBehaviour
 {
-    /// <summary>
     /// GameManager가 호출할 공용 함수입니다.
-    /// </summary>
     /// <param name="sceneName">로드할 씬의 이름</param>
     public void LoadScene(string sceneName)
     {
@@ -17,9 +15,7 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadSceneAsync(sceneName));
     }
 
-    /// <summary>
     /// UI 업데이트 없이 비동기적으로 씬만 로드하는 코루틴입니다.
-    /// </summary>
     /// <param name="sceneName">로드할 씬의 이름</param>
     private IEnumerator LoadSceneAsync(string sceneName)
     {

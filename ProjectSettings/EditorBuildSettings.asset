@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_main/Sample Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/_main/_Scenes/PosterScenes/PosterTest.unity
+    guid: 074d00ea240b370428d4b92c9cf31316
+  - enabled: 1
+    path: Assets/_main/_Scenes/PosterScenes/Poster_1.unity
+    guid: e0547b257a418d149b55442a68cafac3
+  - enabled: 1
+    path: Assets/_main/_Scenes/PosterScenes/Poster_2.unity
+    guid: ef323aeacb872744ba1ee6c1c87ca49a
+  - enabled: 1
+    path: Assets/_main/_Scenes/PosterScenes/Poster_3.unity
+    guid: e0347f85e3b296c469dbb762984c1d24
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

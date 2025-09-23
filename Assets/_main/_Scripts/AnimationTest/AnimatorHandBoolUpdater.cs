@@ -7,6 +7,17 @@ public class AnimatorHandBoolUpdater : MonoBehaviour
 {
     private DirectPositionController _controller;
     
+    // Cached Animator parameter hashes and previous values for edge detection
+    private int _rightHandUpHash;
+    private int _rightHandDownHash;
+    private int _leftHandUpHash;
+    private int _leftHandDownHash;
+    
+    private bool _prevRightUp;
+    private bool _prevRightDown;
+    private bool _prevLeftUp;
+    private bool _prevLeftDown;
+
     // ▼▼▼▼▼ [핵심 변경점 1: public Animator 변수] ▼▼▼▼▼
     [Header("1. Target Animator")]
     [Tooltip("이 스크립트로 제어할 Animator 컴포넌트를 여기에 연결하세요.")]
@@ -27,7 +38,7 @@ public class AnimatorHandBoolUpdater : MonoBehaviour
     public string rightHandDownParamName = "RightHandDown";
     public string leftHandUpParamName = "LeftHandUp";
     public string leftHandDownParamName = "LeftHandDown";
-
+    public STATE state = STATE.NONE;
     void Awake()
     {
         _controller = GetComponent<DirectPositionController>();
@@ -39,8 +50,22 @@ public class AnimatorHandBoolUpdater : MonoBehaviour
             Debug.LogError("Target Animator가 연결되지 않았습니다!", this.gameObject);
         }
         // ▲▲▲▲▲ [여기까지 변경] ▲▲▲▲▲
+
+        // 파라미터 해시 캐싱 (Animator가 연결된 경우)
+        if (targetAnimator != null)
+        {
+            _rightHandUpHash = Animator.StringToHash(rightHandUpParamName);
+            _rightHandDownHash = Animator.StringToHash(rightHandDownParamName);
+            _leftHandUpHash = Animator.StringToHash(leftHandUpParamName);
+            _leftHandDownHash = Animator.StringToHash(leftHandDownParamName);
+        }
     }
 
+    public enum STATE
+    {
+        NONE,
+        PECK_DECK_FLY,
+    }   
     void Update()
     {
         // Target Animator나 Controller가 없으면 아무것도 하지 않습니다.
@@ -48,16 +73,53 @@ public class AnimatorHandBoolUpdater : MonoBehaviour
         {
             return;
         }
+        
+        // 인덱스 유효성 검사 (안전성 강화)
+        if (!IsValidIndex(rightHandUpTriggerIndex) ||
+            !IsValidIndex(rightHandDownTriggerIndex) ||
+            !IsValidIndex(leftHandUpTriggerIndex) ||
+            !IsValidIndex(leftHandDownTriggerIndex))
+        {
+            return;
+        }
 
-        // --- 로직은 기존과 동일하지만, _animator 대신 targetAnimator를 사용합니다. ---
+        // 현재 프레임 입력값 읽기
         bool isRightUp = _controller.triggers[rightHandUpTriggerIndex].IsConditionMet;
         bool isRightDown = _controller.triggers[rightHandDownTriggerIndex].IsConditionMet;
         bool isLeftUp = _controller.triggers[leftHandUpTriggerIndex].IsConditionMet;
         bool isLeftDown = _controller.triggers[leftHandDownTriggerIndex].IsConditionMet;
 
-        targetAnimator.SetBool(rightHandUpParamName, isRightUp);
-        targetAnimator.SetBool(rightHandDownParamName, isRightDown);
-        targetAnimator.SetBool(leftHandUpParamName, isLeftUp);
-        targetAnimator.SetBool(leftHandDownParamName, isLeftDown);
+        // 값이 변할 때만 SetBool 호출 (엣지-트리거 동작)
+        SetBoolIfChanged(_rightHandUpHash, rightHandUpParamName, isRightUp, ref _prevRightUp);
+        SetBoolIfChanged(_rightHandDownHash, rightHandDownParamName, isRightDown, ref _prevRightDown);
+        SetBoolIfChanged(_leftHandUpHash, leftHandUpParamName, isLeftUp, ref _prevLeftUp);
+        SetBoolIfChanged(_leftHandDownHash, leftHandDownParamName, isLeftDown, ref _prevLeftDown);
     }
+
+    private bool IsValidIndex(int index)
+    {
+        return index >= 0 && index < _controller.triggers.Count;
+    }
+
+    private void SetBoolIfChanged(int paramHash, string paramName, bool newValue, ref bool previousValue)
+    {
+        if (newValue == previousValue)
+        {
+            return; // 변화 없으면 아무것도 하지 않음 (재트리거 방지)
+        }
+
+        // Animator에 설정 (해시가 0일 수 있으므로 이름도 폴백으로 처리)
+        if (paramHash != 0)
+        {
+            targetAnimator.SetBool(paramHash, newValue);
+        }
+        else
+        {
+            targetAnimator.SetBool(paramName, newValue);
+        }
+
+        previousValue = newValue;
+    }
+    
+
 }

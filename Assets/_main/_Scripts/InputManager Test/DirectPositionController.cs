@@ -71,8 +71,7 @@ public class DirectPositionController : MonoBehaviour
         None,
         RightHandX, RightHandY, RightHandZ,
         LeftHandX, LeftHandY, LeftHandZ,
-        TestZR, TestZL,
-        TestYR, TestYL
+        HeadX, HeadY, HeadZ
     }
 
     // --- 위치 제어 설정 ---
@@ -121,10 +120,9 @@ public class DirectPositionController : MonoBehaviour
             case DataSource.LeftHandX: return OSCInputManager.Instance.LeftHandX;
             case DataSource.LeftHandY: return OSCInputManager.Instance.LeftHandY;
             case DataSource.LeftHandZ: return OSCInputManager.Instance.LeftHandZ;
-            case DataSource.TestYR: return OSCInputManager.Instance.TestYR;
-            case DataSource.TestYL: return OSCInputManager.Instance.TestYL;
-            case DataSource.TestZR: return OSCInputManager.Instance.TestZR;
-            case DataSource.TestZL: return OSCInputManager.Instance.TestZL;
+            case DataSource.HeadX: return OSCInputManager.Instance.HeadX;
+            case DataSource.HeadY: return OSCInputManager.Instance.HeadY;
+            case DataSource.HeadZ: return OSCInputManager.Instance.HeadZ;
             default: return 0f;
         }
     }

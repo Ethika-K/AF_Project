@@ -11,8 +11,7 @@ public class OSCEventTrigger : MonoBehaviour
         None,
         RightHandX, RightHandY, RightHandZ,
         LeftHandX, LeftHandY, LeftHandZ,
-        TestYR, TestYL,
-        TestZR, TestZL
+        HeadX, HeadY, HeadZ,    
         // OSCInputManager에 변수를 추가할 때마다 여기에도 추가해주면 됩니다.
     }
 
@@ -81,10 +80,9 @@ public class OSCEventTrigger : MonoBehaviour
             case DataSource.LeftHandX: return OSCInputManager.Instance.LeftHandX;
             case DataSource.LeftHandY: return OSCInputManager.Instance.LeftHandY;
             case DataSource.LeftHandZ: return OSCInputManager.Instance.LeftHandZ;
-            case DataSource.TestYR: return OSCInputManager.Instance.TestYR;
-            case DataSource.TestYL: return OSCInputManager.Instance.TestYL;
-            case DataSource.TestZR: return OSCInputManager.Instance.TestZR;
-            case DataSource.TestZL: return OSCInputManager.Instance.TestZL;
+            case DataSource.HeadX: return OSCInputManager.Instance.HeadX;
+            case DataSource.HeadY: return OSCInputManager.Instance.HeadY;
+            case DataSource.HeadZ: return OSCInputManager.Instance.HeadZ;
             default: return 0f;
         }
     }

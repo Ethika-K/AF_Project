@@ -19,13 +19,6 @@ public class OSCInputManager : MonoBehaviour
     public float LeftHandY { get; private set; }
     public float LeftHandZ { get; private set; }
 
-    //test
-    public float TestX { get; private set; }
-    public float TestYR { get; private set; }
-    public float TestYL { get; private set; }
-    public float TestZL { get; private set; }
-    public float TestZR { get; private set; }
-
     
     // --- 2. 정수(int) 데이터를 위한 저장부 ---
     // 제스처 ID나 버튼 클릭 여부 등 정수형 데이터를 저장할 변수입니다.
@@ -60,12 +53,10 @@ public class OSCInputManager : MonoBehaviour
     public void UpdateLeftHandY(float value) { LeftHandY = value; }
     public void UpdateLeftHandZ(float value) { LeftHandZ = value; }
 
-    // Test 위치 업데이트 함수들 (float 입력)
-    public void UpdateTestX(float value) { TestX = value; }
-    public void UpdateTestYR(float value) { TestYR = value; }
-    public void UpdateTestYL(float value) { TestYL = value; }
-    public void UpdateTestZR(float value) { TestZR = value; }
-    public void UpdateTestZL(float value) { TestZL = value; }
+    // 머리 (Head) 위치 업데이트 함수들 (float 입력)
+    public void UpdateHeadX(float value) { HeadX = value; }
+    public void UpdateHeadY(float value) { HeadY = value; }
+    public void UpdateHeadZ(float value) { HeadZ = value; }
 
     // --- 4. 정수(int) 신호 처리를 위한 함수들 ---
 
